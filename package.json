@@ -3,7 +3,6 @@
   "description": "StackBlitz AI Agent",
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@9.4.0",
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -17,7 +16,9 @@
     "start": "bindings=$(./bindings.sh) && wrangler pages dev ./build/client $bindings",
     "typecheck": "tsc",
     "typegen": "wrangler types",
-    "preview": "pnpm run build && pnpm run start"
+    "preview": "pnpm run build && pnpm run start",
+    "start:server": "remix-serve build/server/index.js",
+    "start:easypanel": "NODE_ENV=production HOST=0.0.0.0 PORT=$PORT remix-serve build/server/index.js"
   },
   "engines": {
     "node": ">=18.18.0"
@@ -48,6 +49,7 @@
     "@remix-run/cloudflare": "^2.10.2",
     "@remix-run/cloudflare-pages": "^2.10.2",
     "@remix-run/react": "^2.10.2",
+    "@remix-run/serve": "^2.10.2",
     "@uiw/codemirror-theme-vscode": "^4.23.0",
     "@unocss/reset": "^0.61.0",
     "@webcontainer/api": "1.3.0-internal.10",
